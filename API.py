@@ -88,6 +88,13 @@ def welcome():
 #Este servicio consulta los datos en la base de datos
 @app.route('/api/bankaya/database/show-data', methods=['GET'])
 def show_datas():
+    ip_origin = request.environ['REMOTE_ADDR']
+    request_date = datetime.now()
+    method = request.environ['REQUEST_METHOD']
+    api = request.environ['PATH_INFO']
+
+    insert_in_table(1,ip_origin,request_date,method,api)
+
     con = sqlite3.connect('log_pokemon.db')
     sql_table()
     cur = con.cursor()
@@ -101,16 +108,9 @@ def show_datas():
                 'method': row[3],
                 'origin_request': row[4]
                 })
+    con.close()
     
     response = {'log_data':datas}
-
-    ip_origin = request.environ['REMOTE_ADDR']
-    request_date = datetime.now()
-    method = request.environ['REQUEST_METHOD']
-    api = request.environ['PATH_INFO']
-
-
-    insert_in_table(1,ip_origin,request_date,method,api)
 
     return response
 
