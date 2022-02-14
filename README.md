@@ -1,4 +1,5 @@
 # Bankaya_poketest
+<<<<<<< HEAD
 Este proyecto consiste de microservicios adaptados al test  de backend
 
 ## Requerimientos
@@ -141,3 +142,6 @@ http://localhost:9000/POW/<int:base>/<int:exponente>'
 ```
 http://localhost:9000/api/bankaya/database/show-data'
 ```
+=======
+Este proyecto consiste de microservicios adaptados al test  de backend.
+>>>>>>> efe790654f2e126ff19defcd74b2208581ba7347
